@@ -79,10 +79,10 @@
         const idSerie = urlParams.get("idserie");
         let request = "api/Series/" + idSerie;
 
-        $.getJSON(urlApi + request, function (data) {
+        $.getJSON(urlApi + request, function (serie) {
           $(".card").html("");
           let img = $("<img>", {
-            "src": data.imagen,
+            "src": serie.imagen,
             "class": "card-img-top"
           });
 
@@ -91,20 +91,20 @@
           })
             .append($("<h5>", {
               "class": "card-title",
-              "text": data.nombre
+              "text": serie.nombre
             }))
             .append($("<p>", {
               "class": "card-text",
-              "text": "IMDB: " + data.puntuacion
+              "text": "IMDB: " + serie.puntuacion
             }))
             .append($("<a>", {
               "class": "btn btn-primary w-100 mt-3",
               "text": "Personajes",
-              "href": "/personajes.html?idserie=" + data.idSerie
+              "href": "/personajes.html?idserie=" + serie.idSerie
             }));
 
           $(".card").append(img).append(cardBody);
-          $("#idserie").html("Serie " + data.idSerie);
+          $("#idserie").html("Serie " + serie.idSerie);
         });
       }
     });

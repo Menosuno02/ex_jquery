@@ -99,18 +99,15 @@
         personaje.idPersonaje = 1;
         personaje.nombre = $("#cajanombre").val();
         personaje.imagen = $("#cajaimg").val();
-        personaje.serie = parseInt(serie);
+        personaje.idSerie = parseInt(serie);
         let dataJSON = JSON.stringify(personaje);
         let request = "api/Personajes";
-        console.log(serie);
         $.ajax({
           url: urlApi + request,
           type: "POST",
           contentType: "application/json",
           data: dataJSON,
           success: function () {
-            console.log("a")
-            window.location.assign("/personajes.html?idserie=" + serie);
             window.open("/personajes.html?idserie=" + serie, "_self");
           }
         });
